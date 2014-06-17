@@ -21,10 +21,8 @@
 
   <cxf:rsServer id="testCxfEndpoint" address="/beer" serviceClass="com.redhat.httpgateway.BeerCxfRsResource">
     <cxf:providers>
-      <bean class="com.fasterxml.jackson.jaxrs.json.JacksonJsonProvider"/>
     </cxf:providers>
     <cxf:features>
-      <bean class="io.fabric8.cxf.endpoint.ManagedApiFeature"/>
     </cxf:features>
   </cxf:rsServer>
 </blueprint>
