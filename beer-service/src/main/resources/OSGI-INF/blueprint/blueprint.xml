@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<blueprint xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xmlns:cxf="http://camel.apache.org/schema/blueprint/cxf"
+
+           xsi:schemaLocation="
+		http://www.osgi.org/xmlns/blueprint/v1.0.0 http://www.osgi.org/xmlns/blueprint/v1.0.0/blueprint.xsd
+		http://camel.apache.org/schema/blueprint http://camel.apache.org/schema/blueprint/camel-blueprint.xsd
+		http://camel.apache.org/schema/blueprint/cxf http://camel.apache.org/schema/blueprint/cxf/camel-cxf.xsd">
+
+
+  <camelContext id="httpGatewayContext" xmlns="http://camel.apache.org/schema/blueprint" autoStartup="true">
+
+    <route id="beerRoute" autoStartup="true">
+      <from uri="cxfrs:bean:testCxfEndpoint"/>
+      <log message="wooHoo!! did the routing correctly! for /rest/beer" />
+      <transform>
+        <constant>Its 5oclock somewhere. you know what to do.</constant>
+      </transform>
+    </route>
+  </camelContext>
+
+  <cxf:rsServer id="testCxfEndpoint" address="/rest" serviceClass="com.redhat.httpgateway.BeerCxfRsResource">
+    <cxf:providers>
+      <bean class="com.fasterxml.jackson.jaxrs.json.JacksonJsonProvider"/>
+    </cxf:providers>
+    <cxf:features>
+      <bean class="io.fabric8.cxf.endpoint.ManagedApiFeature"/>
+    </cxf:features>
+  </cxf:rsServer>
+</blueprint>
