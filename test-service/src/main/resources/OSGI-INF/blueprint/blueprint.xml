@@ -19,7 +19,7 @@
     </route>
   </camelContext>
 
-  <cxf:rsServer id="testCxfEndpoint" address="/rest" serviceClass="com.redhat.httpgateway.TestCxfRsResource">
+  <cxf:rsServer id="testCxfEndpoint" address="/test" serviceClass="com.redhat.httpgateway.TestCxfRsResource">
     <cxf:providers>
       <bean class="com.fasterxml.jackson.jaxrs.json.JacksonJsonProvider"/>
     </cxf:providers>

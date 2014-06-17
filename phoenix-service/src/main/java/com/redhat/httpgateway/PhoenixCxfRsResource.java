@@ -7,7 +7,7 @@ import javax.ws.rs.Path;
 /**
  * Created by ceposta on 5/15/14.
  */
-@Path("/phoenix")
+@Path("/")
 public class PhoenixCxfRsResource {
 
     @POST
